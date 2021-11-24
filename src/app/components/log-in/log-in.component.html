@@ -1,0 +1,71 @@
+<app-top-navbar></app-top-navbar>
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <nz-card nzTitle="Log in" [nzBordered]="false" class="card" nzType="inner">
+    <form
+      nz-form
+      class="example-form"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+    >
+      <nz-form-item class="example-full-width form-group">
+        <nz-form-control nzErrorTip="Please input your username!">
+          <nz-input-group nzPrefixIcon="user">
+            <input
+              type="text"
+              nz-input
+              formControlName="username"
+              placeholder="Username"
+              class="form-control"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="example-full-width form-group">
+        <nz-form-control nzErrorTip="Please input your Password!">
+          <nz-input-group [nzSuffix]="suffixTemplate" nzPrefixIcon="lock">
+            <input
+              type="password"
+              nz-input
+              formControlName="password"
+              placeholder="Password"
+              [type]="hide ? 'text' : 'password'"
+              type="password"
+              formControlName="password"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+            />
+          </nz-input-group>
+          <ng-template #suffixTemplate>
+            <i
+              nz-icon
+              [nzType]="hide ? 'eye' : 'eye-invisible'"
+              (click)="hide = !hide"
+            ></i>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <div nz-row class="login-form-margin form-group">
+        <button
+          nz-button
+          nzType="primary"
+          [disabled]="loading"
+          class="btn btn-primary btn-block"
+        >
+          <span
+            *ngIf="loading"
+            class="spinner-border spinner-border-sm mr-1"
+          ></span>
+          Log in
+        </button>
+        <a
+          nz-button
+          nzType="text"
+          class="btn-block forgot-password"
+          routerLink="/forgot-password"
+          routerLinkActive="active"
+          >forgot password</a
+        >
+      </div>
+    </form>
+  </nz-card>
+</div>

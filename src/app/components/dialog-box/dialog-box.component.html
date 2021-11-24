@@ -1,0 +1,108 @@
+<!-- dialog-box.component.html -->
+<form nz-form class="example-form" [formGroup]="form">
+  <nz-form-item *ngIf="!['Delete', 'View', 'Notification'].includes(action)">
+    <nz-form-control nzErrorTip="Please enter task name!">
+      <nz-input-group nzPrefixIcon="snippets">
+        <input
+          type="text"
+          nz-input
+          formControlName="name"
+          placeholder="{{ action }} Name"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item *ngIf="!['Delete', 'View', 'Notification'].includes(action)">
+    <nz-form-control nzErrorTip="Please enter task Description!">
+      <nz-input-group nzPrefixIcon="form">
+        <input
+          type="text"
+          nz-input
+          formControlName="description"
+          placeholder="{{ action }} Description"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item
+    appearance="fill"
+    *ngIf="!['Delete', 'View', 'Notification'].includes(action)"
+  >
+    <nz-select formControlName="user">
+      <nz-option
+        *ngFor="let option of options"
+        nzValue="{{ option }}"
+        nzLabel="{{ option }}"
+      ></nz-option>
+    </nz-select>
+  </nz-form-item>
+  <ng-form-item
+    appearance="fill"
+    *ngIf="!['Delete', 'View', 'Notification'].includes(action)"
+  >
+    <nz-date-picker
+      formControlName="date"
+      class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.date.errors }"
+      nzFormat="yyyy-MM-dd HH:mm:ss"
+      [nzShowTime]="{ nzDefaultOpenValue: timeDefaultValue }"
+    ></nz-date-picker>
+  </ng-form-item>
+  <div *ngIf="action == 'Delete'">
+    Sure to delete <b>{{ local_data?.name }}</b
+    >?
+  </div>
+  <div *ngIf="action == 'View'">
+    <p>id: {{ local_data?.id }}</p>
+    <p>name: {{ local_data?.name }}</p>
+    <p>description: {{ local_data?.description }}</p>
+    <p>user: {{ local_data?.user }}</p>
+    <p>date: {{ local_data?.date | date: "M/d/yy, h:mm a" }}</p>
+  </div>
+
+  <div *ngIf="action == 'Notification'">
+    <nz-list>
+      <nz-list-item class="notification-modder" *ngFor="let item of local_data">
+        <div class="notification-inner">
+          <span
+            ><strong>
+              {{ item.name }}
+            </strong>
+          </span>
+          <span nz-typography nzType="success"
+            ><mark>{{ item.date | date: "M/d/yy, h:mm a" }}</mark></span
+          >
+        </div>
+        <div
+          class="notification-inner notification-inner-2"
+          nz-typography
+          nzType="secondary"
+        >
+          {{ item.description }}
+        </div>
+      </nz-list-item>
+    </nz-list>
+  </div>
+</form>
+<div class="modal-footer">
+  <button
+    *ngIf="!['Notification', 'View'].includes(action)"
+    nz-button
+    [nzType]="'primary'"
+    (click)="doAction()"
+  >
+    OK
+  </button>
+  <button
+    *ngIf="action != 'Notification'"
+    nz-button
+    [nzType]="'primary'"
+    (click)="closeDialog()"
+  >
+    Close
+  </button>
+</div>

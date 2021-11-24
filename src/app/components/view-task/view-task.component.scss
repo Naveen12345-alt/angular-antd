@@ -1,0 +1,30 @@
+$light-text: rgb(4, 124, 243);
+$dark-text: red;
+
+nz-table,
+.add-task-btn,
+.search-filter {
+  position: relative;
+  width: 100%;
+  top: 2rem;
+}
+
+nz-form-item {
+  width: 30%;
+}
+
+@mixin btn-colors($edit: true) {
+  @if $edit {
+    color: $light-text;
+  } @else {
+    color: $dark-text;
+  }
+}
+
+.edit-btn {
+  @include btn-colors($edit: true);
+}
+
+.delete-btn {
+  @include btn-colors($edit: false);
+}

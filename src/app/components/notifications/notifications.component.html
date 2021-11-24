@@ -1,0 +1,23 @@
+<app-top-navbar></app-top-navbar>
+<!-- app.component.html -->
+<div class="container text-center">
+  <nz-table
+    #basicTable
+    nzShowPagination
+    nzShowSizeChanger
+    [nzData]="ELEMENT_DATA"
+  >
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.name }}</td>
+        <td>{{ data.description }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

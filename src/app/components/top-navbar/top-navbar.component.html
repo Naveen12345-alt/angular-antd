@@ -1,0 +1,28 @@
+<nz-page-header
+  class="site-page-header-ghost-wrapper app-header"
+  [nzGhost]="false"
+>
+  <nz-page-header-title>Task Alert</nz-page-header-title>
+  <nz-page-header-extra>
+    <ng-template [ngIf]="!user">
+      <div>
+        <a nz-button routerLink="/login" routerLinkActive="active">Log in</a>
+        <a nz-button nzType="primary" nzDanger routerLink="/register"
+          >Register</a
+        >
+      </div>
+    </ng-template>
+    <ng-template [ngIf]="user">
+      <a nz-button routerLink="/view-task" routerLinkActive="inactive"
+        >ViewTask</a
+      ><a nz-button (click)="openNotifications()">Notification</a>
+      <a
+        nz-button
+        routerLink="/login"
+        routerLinkActive="active"
+        (click)="logout()"
+        >logOut</a
+      >
+    </ng-template>
+  </nz-page-header-extra>
+</nz-page-header>

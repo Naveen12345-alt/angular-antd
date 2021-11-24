@@ -1,0 +1,60 @@
+<app-top-navbar></app-top-navbar>
+<!-- app.component.html -->
+<div class="container text-center">
+  <div class="search-filter" fxLayout="row" fxLayoutAlign="space-around center">
+    <nz-form-item appearance="fill">
+      <nz-select
+        nzMode="multiple"
+        nzShowSearch
+        nzPlaceHolder="Search Usernames"
+        [(ngModel)]="filterUsername"
+        (ngModelChange)="doFilter(filterUsername)"
+      >
+        <nz-option
+          *ngFor="let option of options"
+          [nzLabel]="option"
+          [nzValue]="option"
+        ></nz-option>
+      </nz-select>
+    </nz-form-item>
+    <button
+      nz-button
+      nzType="primary"
+      (click)="openDialog('Add', {}, options)"
+      color="primary"
+    >
+      Add Task
+    </button>
+  </div>
+  <nz-table
+    #basicTable
+    nzShowPagination
+    nzShowSizeChanger
+    [nzData]="filteredData"
+  >
+    <thead>
+      <tr>
+        <th>ID.</th>
+        <th>Name</th>
+        <th>User</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.id }}</td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.user }}</td>
+        <td>{{ data.date | date: "M/d/yy, h:mm a" }}</td>
+        <td>
+          <a (click)="openDialog('View', data, options)">View</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a (click)="openDialog('Update', data, options)">Update</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a (click)="openDialog('Delete', data, options)">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
