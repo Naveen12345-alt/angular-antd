@@ -53,15 +53,15 @@
     ></nz-date-picker>
   </ng-form-item>
   <div *ngIf="action == 'Delete'">
-    Sure to delete <b>{{ local_data?.name }}</b
+    Sure to delete <b>{{ local_data?.task_heading }}</b
     >?
   </div>
   <div *ngIf="action == 'View'">
     <p>id: {{ local_data?.id }}</p>
-    <p>name: {{ local_data?.name }}</p>
-    <p>description: {{ local_data?.description }}</p>
-    <p>user: {{ local_data?.user }}</p>
-    <p>date: {{ local_data?.date | date: "M/d/yy, h:mm a" }}</p>
+    <p>name: {{ local_data?.task_heading }}</p>
+    <p>description: {{ local_data?.task_description }}</p>
+    <p>user: {{ local_data?.task_assigned_to }}</p>
+    <p>date: {{ local_data?.task_notify_time | date: "M/d/yy, h:mm a" }}</p>
   </div>
 
   <div *ngIf="action == 'Notification'">
@@ -70,11 +70,11 @@
         <div class="notification-inner">
           <span
             ><strong>
-              {{ item.name }}
+              {{ item.heading }}
             </strong>
           </span>
           <span nz-typography nzType="success"
-            ><mark>{{ item.date | date: "M/d/yy, h:mm a" }}</mark></span
+            ><mark>{{ item.notify_time | date: "M/d/yy, h:mm a" }}</mark></span
           >
         </div>
         <div

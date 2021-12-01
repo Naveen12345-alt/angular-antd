@@ -2336,6 +2336,11 @@ cross-spawn@^7.0.3:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
+crypto-js@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-4.1.1.tgz#9e485bcf03521041bd85844786b83fb7619736cf"
+  integrity sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==
+
 css-blank-pseudo@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/css-blank-pseudo/-/css-blank-pseudo-0.1.4.tgz#dfdefd3254bf8a82027993674ccf35483bfcb3c5"
@@ -3117,6 +3122,11 @@ gauge@~2.7.3:
     string-width "^1.0.1"
     strip-ansi "^3.0.1"
     wide-align "^1.1.0"
+
+generate-js@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/generate-js/-/generate-js-3.1.2.tgz#25ff8dd4c38090a938f648887d536bad46b47b62"
+  integrity sha1-Jf+N1MOAkKk49kiIfVNrrUa0e2I=
 
 gensync@^1.0.0-beta.2:
   version "1.0.0-beta.2"
@@ -5410,7 +5420,7 @@ rxjs@6.6.7:
   dependencies:
     tslib "^1.9.0"
 
-rxjs@^7.2.0, rxjs@~7.4.0:
+rxjs@^7.2.0, rxjs@^7.4.0:
   version "7.4.0"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.4.0.tgz#a12a44d7eebf016f5ff2441b87f28c9a51cebc68"
   integrity sha512-7SQDi7xeTMCJpqViXh8gL/lebcwlp3d831F05+9B44A4B0WfsEwUQHR64gsH1kvJ+Ep/J9K2+n1hVl1CsGN23w==
@@ -5469,6 +5479,13 @@ schema-utils@^3.0.0, schema-utils@^3.1.0, schema-utils@^3.1.1:
     "@types/json-schema" "^7.0.8"
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
+
+secure-web-storage@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/secure-web-storage/-/secure-web-storage-1.0.2.tgz#7309c35c3685f0a9e63a8c4964c6ecdc0f83839c"
+  integrity sha1-cwnDXDaF8KnmOoxJZMbs3A+Dg5w=
+  dependencies:
+    generate-js "^3.1.2"
 
 select-hose@^2.0.0:
   version "2.0.0"

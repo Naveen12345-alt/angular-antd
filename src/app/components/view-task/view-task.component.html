@@ -44,9 +44,9 @@
     <tbody>
       <tr *ngFor="let data of basicTable.data">
         <td>{{ data.id }}</td>
-        <td>{{ data.name }}</td>
-        <td>{{ data.user }}</td>
-        <td>{{ data.date | date: "M/d/yy, h:mm a" }}</td>
+        <td>{{ data.task_heading }}</td>
+        <td>{{ data.task_assigned_to }}</td>
+        <td>{{ data.task_notify_time | date: "M/d/yy, h:mm a" }}</td>
         <td>
           <a (click)="openDialog('View', data, options)">View</a>
           <nz-divider nzType="vertical"></nz-divider>

@@ -1,25 +1,34 @@
-import { AfterViewInit, Component, OnInit } from "@angular/core"
-import { NotificationService } from "@app/_services"
-import { first } from "rxjs/operators"
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { NotificationService } from '@app/_services';
+import { LocalService } from '@app/_services/local.service';
+import { DataService } from '@app/_services/websoket.service';
+import { catchError, first, map, tap } from 'rxjs/operators';
 
 @Component({
-  selector: "app-notifications",
-  templateUrl: "./notifications.component.html",
-  styleUrls: ["./notifications.component.scss"],
+  selector: 'app-notifications',
+  templateUrl: './notifications.component.html',
+  styleUrls: ['./notifications.component.scss'],
 })
 export class NotificationsComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ["name", "description"]
-  ELEMENT_DATA = []
+  displayedColumns: string[] = ['name', 'description'];
+  ELEMENT_DATA = [];
 
-  constructor(private notificationService: NotificationService) {}
+  constructor(
+    private notificationService: NotificationService,
+    private socketService: DataService,
+    private localService: LocalService
+  ) {
+    // this.socketService.connect();
+  }
 
   ngOnInit() {
     this.notificationService
-      .getById(JSON.parse(localStorage.getItem("user"))["id"])
+      .getById(JSON.parse(this.localService.getJsonValue('user'))['username'])
       .pipe(first())
       .subscribe((userTask) => {
-        this.ELEMENT_DATA = userTask
-      })
+        console.log(userTask);
+        this.ELEMENT_DATA = userTask;
+      });
   }
 
   ngAfterViewInit() {}
